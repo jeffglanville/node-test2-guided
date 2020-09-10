@@ -11,4 +11,18 @@ router.get("/", async (req, res, next) => {
 	}
 })
 
+router.get("/:id", async (req, res, next) => {
+	try {
+		const hobbit = await Hobbits.findById(req.params.id);
+		if (!hobbit) {
+			return res.status(404).json({
+				message: "The hobbit cannot be found"
+			})
+		}
+		res.json(hobbit)
+	}catch(err) {
+		next(err)
+	}
+})
+
 module.exports = router
