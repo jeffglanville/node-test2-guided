@@ -14,7 +14,7 @@ describe("hobbits integration tests", () => {
         const res = await supertest(server).get("/hobbits")
         expect(res.statusCode).toBe(200)
         expect(res.type).toBe("application/json")
-        expect(res.body.length).toBeGreaterThenOrEqual(4)
+        expect(res.body.length).toBeGreaterThanOrEqual(4)
         expect(res.body[0].name).toBe("sam")
     })
 
